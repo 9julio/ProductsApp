@@ -1,12 +1,12 @@
 package com.jafernandez.productsapp.controllers;
 
+import com.jafernandez.productsapp.exceptions.BadRequestException;
 import com.jafernandez.productsapp.models.dto.Product;
 import com.jafernandez.productsapp.services.ProductService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
@@ -17,20 +17,19 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/product/{productId}/similar")
-    private Flux<Product> getProducts(@PathVariable("productId") String productId) {
+    private Flux<Product> getProducts(@PathVariable("productId") String productId) throws Exception {
 
         Long id = null;
 
         if (StringUtils.isEmpty(productId)) {
-            // BAD REQUEST
+            throw new BadRequestException();
         } else if (!StringUtils.isNumeric(productId)) {
-            // BAD REQUEST
+            throw new BadRequestException();
         } else {
             id = Long.parseLong(productId);
         }
 
         Flux<Product> result = this.productService.getSimilarProductsById(id);
-
         return result;
     }
 

@@ -11,29 +11,29 @@ import java.util.Objects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
 
-    private long id;
+    private Long id;
     private String name;
-    private double price;
-    private boolean availability;
+    private Double price;
+    private Boolean availability;
 
     public Product() { }
 
     @JsonCreator
-    public Product(@JsonProperty(value = "id") long id,
+    public Product(@JsonProperty(value = "id") Long id,
                    @JsonProperty(value = "name") String name,
-                   @JsonProperty(value = "price") double price,
-                   @JsonProperty(value = "availability") boolean availability) {
+                   @JsonProperty(value = "price") Double price,
+                   @JsonProperty(value = "availability") Boolean availability) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.availability = availability;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -45,19 +45,19 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public boolean isAvailability() {
+    public Boolean getAvailability() {
         return availability;
     }
 
-    public void setAvailability(boolean availability) {
+    public void setAvailability(Boolean availability) {
         this.availability = availability;
     }
 
@@ -66,7 +66,10 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return id == product.id && Double.compare(product.price, price) == 0 && availability == product.availability && Objects.equals(name, product.name);
+        return Objects.equals(id, product.id) &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(price, product.price) &&
+                Objects.equals(availability, product.availability);
     }
 
     @Override

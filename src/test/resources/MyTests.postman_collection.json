@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "97f942bf-58ba-493d-ae1d-6a76d80c1dc9",
+		"name": "MyTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Call with timeout.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/product/3/similar",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"product",
+						"3",
+						"similar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Call with errros.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/product/4/similar",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"product",
+						"4",
+						"similar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Call with text in ID.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/product/aaa/similar",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"product",
+						"aaa",
+						"similar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Call OK.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/product/1/similar",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"product",
+						"1",
+						"similar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
