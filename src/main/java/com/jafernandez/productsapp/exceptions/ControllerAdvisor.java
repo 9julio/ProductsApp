@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.reactive.function.client.WebClientRequestException;
 
 import java.util.concurrent.TimeoutException;
 
@@ -18,6 +19,11 @@ public class ControllerAdvisor {
     @ExceptionHandler(TimeoutException.class)
     public ResponseEntity<String> handleTimeoutException() {
         return new ResponseEntity<String>("The call was very slow.", HttpStatus.REQUEST_TIMEOUT);
+    }
+
+    @ExceptionHandler(WebClientRequestException.class)
+    public ResponseEntity<String> handleWebClientException() {
+        return new ResponseEntity<String>("Internal error.", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

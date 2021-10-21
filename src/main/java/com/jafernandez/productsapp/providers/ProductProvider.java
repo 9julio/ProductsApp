@@ -21,7 +21,6 @@ public class ProductProvider {
                 .uri("/product/{productId}/similarids", productId)
                 .retrieve()
                 .bodyToFlux(new ParameterizedTypeReference<Integer>() {})
-                .timeout(Duration.ofSeconds(1))
                 .flatMap(similarProductId ->
                         webClient
                                 .get()
@@ -29,7 +28,6 @@ public class ProductProvider {
                                 .retrieve()
                                 .onStatus(HttpStatus::isError, clientResponse -> { return Mono.empty(); })
                                 .bodyToFlux(Product.class)
-                                .timeout(Duration.ofSeconds(1))
                 );
     }
 
