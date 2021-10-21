@@ -13,17 +13,17 @@ public class ControllerAdvisor {
 
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<String> handleBadRequestException(BadRequestException e) {
-        return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
     }
 
     @ExceptionHandler(TimeoutException.class)
     public ResponseEntity<String> handleTimeoutException() {
-        return new ResponseEntity<String>("The call was very slow.", HttpStatus.REQUEST_TIMEOUT);
+        return new ResponseEntity<String>("The call was very slow.", HttpStatus.OK);
     }
 
     @ExceptionHandler(WebClientRequestException.class)
     public ResponseEntity<String> handleWebClientException() {
-        return new ResponseEntity<String>("Internal error.", HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<String>("Internal error.", HttpStatus.OK);
     }
 
 }
