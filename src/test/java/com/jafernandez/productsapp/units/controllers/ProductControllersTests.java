@@ -34,4 +34,17 @@ public class ProductControllersTests {
         assertNotNull(result);
     }
 
+    @Test
+    public void test_getProductBySimilarId_BadRequestError() throws Exception {
+
+        String id = "someId";
+
+        MvcResult result = mvc
+                .perform(get(String.format("/product/%s/similar", id)))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        assertNotNull(result);
+    }
+
 }

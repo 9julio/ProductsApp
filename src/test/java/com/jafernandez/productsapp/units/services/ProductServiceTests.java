@@ -10,6 +10,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import reactor.core.publisher.Flux;
 
+import java.util.concurrent.TimeoutException;
+
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
