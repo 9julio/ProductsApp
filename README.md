@@ -17,9 +17,9 @@ docker-compose up -d simulado influxdb grafana
 ```
 Check that mocks are working with a sample request to [http://localhost:3001/product/1/similarids](http://localhost:3001/product/1/similarids).
 
-To execute the test run:
+To execute the test run in Windows:
 ```
-docker-compose run --rm k6 run scripts/test.js
+docker-compose run --rm k6 run //scripts//test.js
 ```
 Browse [http://localhost:3000/d/Le2Ku9NMk/k6-performance-test](http://localhost:3000/d/Le2Ku9NMk/k6-performance-test) to view the results.
 
